@@ -1,2 +1,40 @@
 ---
 # defaults file for ansible-create-dlm-dockers
+# REMINDER: GREAT all-in-one compose project for Grafana/Prometheus/Alermanager/CADvisor: https://github.com/stefanprodan/dockprom
+
+# Directories
+rootcfg: /dockers/config
+rootdnld: /dockers/downloads
+docker_compose_store: /etc/docker/compose
+application_dirs:
+  - "{{ rootcfg }}/bazarr"
+  - "{{ rootcfg }}/deluge"
+  - "{{ rootdnld }}/deluge"
+  - "{{ rootcfg }}/jackett" 
+  - "{{ rootcfg }}/deluge/black-hole" #jackett
+  - "{{ rootcfg }}/radarr"
+  - "{{ rootcfg }}/sabnzbd"
+  - "{{ rootdnld }}/sabnzbd"
+  - "{{ rootdnld }}/sabnzbd/incomplete-downloads"
+  - "{{ rootcfg }}/sonarr"
+  - "{{ rootcfg }}/heimdall"
+
+delete_images: false
+
+mnt_root: /mnt
+
+application_list:
+  - name: bazarr
+    repository: ghcr.io/linuxserver/bazarr
+  - name: deluge
+    repository: ghcr.io/linuxserver/deluge
+  - name: jackett
+    repository: ghcr.io/linuxserver/jackett
+  - name: radarr
+    repository: ghcr.io/linuxserver/radarr
+  - name: sabnzbd
+    repository: ghcr.io/linuxserver/sabnzbd
+  - name: sonarr
+    repository: ghcr.io/linuxserver/sonarr
+  - name: heimdall
+    repository: ghcr.io/linuxserver/heimdall

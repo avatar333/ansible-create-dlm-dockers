@@ -1,0 +1,9 @@
+---
+
+- name: Pull image
+  shell:
+    cmd: 'docker-compose 
+          -f /etc/docker/compose/{{ item.name }}/docker-compose.yml 
+          pull'
+  loop: "{{ application_list }}"
+          

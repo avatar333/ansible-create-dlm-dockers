@@ -1,0 +1,6 @@
+---
+
+- name: Delete docker images
+  shell:
+    cmd: 'docker rmi "{{ item.repository }}"'
+  loop: "{{ application_list }}"

@@ -1,2 +1,15 @@
 ---
 # tasks file for ansible-create-dlm-dockers
+
+- import_tasks: 010-basic-setup.yml
+  tags: basic-setup
+
+- import_tasks: 020-copy-systemd-service-files.yml
+  tags: copy-systemd-service-files
+
+- import_tasks: 030-pull-images.yml
+  tags: pull-images
+
+- import_tasks: 100-delete-images.yml
+  tags: delete-images
+  when: delete_images
