@@ -1,0 +1,9 @@
+---
+
+- name: Copy .httpasswd file
+  copy:
+    src: htpasswd
+    dest: "{{ rootcfg }}/heimdall/nginx/.htpasswd"
+    owner: kevinp
+    group: kevinp
+    mode: 0664

@@ -6,6 +6,18 @@
     dest: "/etc/systemd/system/{{ item.name }}.service"
   loop: "{{ application_list }}"
 
-- name: SystemD daemon re-load
-  systemd:
-    daemon_reload: true
+#- name: SystemD daemon re-load
+#  systemd:
+#    daemon_reload: true
+#    name: "{{ item.name }}"
+#    enabled: true
+#    state: started
+#  loop: "{{ application_list }}"
+
+#- name: Set daemons to enabled
+#  systemd:
+#    name: "{{ item.name }}"
+#    enabled: true
+#    state: started
+#  loop: "{{ application_list }}"
+

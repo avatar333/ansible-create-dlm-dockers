@@ -1,17 +1,17 @@
 ---
 version: "2.1"
 services:
-  radarr:
-    image: ghcr.io/linuxserver/radarr
-    container_name: radarr
+  sonarr:
+    image: ghcr.io/linuxserver/mylar3
+    container_name: mylar3
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Africa/Johannesburg
     volumes:
-      - "{{ rootcfg }}/radarr:/config"
-      - "{{ mnt_root }}:/movies"
+      - "{{ rootcfg }}/mylar3:/config"
+      - "{{ rootdata }}/ubooquity/comics:/comics"
       - "{{ rootdnld }}/sabnzbd:/downloads"
     ports:
-      - 7878:7878
+      - 8090:8090
     restart: unless-stopped

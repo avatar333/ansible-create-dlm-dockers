@@ -1,0 +1,17 @@
+[Unit]
+Description=dockprom service with docker compose
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+Environment="ADMIN_USER=admin"
+Environment="ADMIN_PASSWORD=admin"
+Environment="ADMIN_PASSWORD_HASH=JDJhJDE0JE91S1FrN0Z0VEsyWmhrQVpON1VzdHVLSDkyWHdsN0xNbEZYdnNIZm1pb2d1blg4Y09mL0ZP"
+WorkingDirectory=/etc/docker/compose/dockprom
+ExecStart=/bin/docker-compose up -d --remove-orphans
+ExecStop=/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target

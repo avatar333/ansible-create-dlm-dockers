@@ -7,12 +7,11 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=Africa/Johannesburg
     volumes:
       - "{{ rootcfg }}/sabnzbd:/config"
       - "{{ rootdnld }}/sabnzbd:/downloads"
       - "{{rootdnld }}/sabnzbd/incomplete-downloads:/incomplete-downloads"
     ports:
       - 8080:8080
-      - 9090:9090
     restart: unless-stopped

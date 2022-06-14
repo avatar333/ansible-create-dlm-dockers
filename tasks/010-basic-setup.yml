@@ -10,6 +10,8 @@
   loop:
     - "{{ rootcfg }}"
     - "{{ rootdnld }}"
+    - "{{ rootdata }}"
+    - "{{ rootdockprom }}"
 
 - name: Create application directories
   file:
@@ -18,8 +20,7 @@
     mode: 0755
     owner: kevinp
     group: kevinp
-  loop:
-    - "{{ application_dirs }}"
+  loop: "{{ application_dirs }}"
 
 - name: Create all application sub-dirs to store docker-compose.yml files
   file:

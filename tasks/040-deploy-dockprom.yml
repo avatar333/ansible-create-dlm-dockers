@@ -1,0 +1,21 @@
+---
+
+- name: Clone git project
+  ansible.builtin.git:
+    repo: "{{ dockprom_repository }}"
+    dest: "{{ rootdockprom }}/dockprom"
+
+- name: Pull image
+  shell:
+    cmd: 'docker-compose
+          -f "{{ rootdockprom }}"/dockprom/docker-compose.yml
+          pull'
+
+- name: Copy systemd service file
+  copy:
+    src: dockprom.service
+    dest: /etc/systemd/system/
+    
+- name: Systemd daemon-reload
+  systemd:
+    daemon_reload: true

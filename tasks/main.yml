@@ -10,6 +10,13 @@
 - import_tasks: 030-pull-images.yml
   tags: pull-images
 
+- import_tasks: 040-deploy-dockprom.yml
+  tags: deploy-dockprom
+  when: do_deploy_dockprom
+
 - import_tasks: 100-delete-images.yml
   tags: delete-images
-  when: delete_images
+  when: do_delete_images
+
+- import_tasks: 080-apply-custom-config-heimdall.yml
+  tags: apply-custom-config-heimdall

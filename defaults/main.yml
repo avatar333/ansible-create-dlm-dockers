@@ -5,25 +5,39 @@
 # Directories
 rootcfg: /dockers/config
 rootdnld: /dockers/downloads
+rootdata: /dockers/rootdata
+rootdockprom: /etc/docker/compose
 docker_compose_store: /etc/docker/compose
 application_dirs:
   - "{{ rootcfg }}/bazarr"
   - "{{ rootcfg }}/deluge"
   - "{{ rootdnld }}/deluge"
   - "{{ rootcfg }}/jackett" 
-  - "{{ rootcfg }}/deluge/black-hole" #jackett
+  - "{{ rootcfg }}/deluge/black-hole"
   - "{{ rootcfg }}/radarr"
   - "{{ rootcfg }}/sabnzbd"
   - "{{ rootdnld }}/sabnzbd"
   - "{{ rootdnld }}/sabnzbd/incomplete-downloads"
   - "{{ rootcfg }}/sonarr"
   - "{{ rootcfg }}/heimdall"
-
-delete_images: false
+  - "{{ rootcfg }}/htpcmanager"
+  - "{{ rootcfg }}/ubooquity"
+  - "{{ rootcfg }}/ubooquity"
+  - "{{ rootdata }}/ubooquity/books"
+  - "{{ rootdata }}/ubooquity/comics"
+  - "{{ rootdata }}/ubooquity/files"
+  - "{{ rootdata }}/mariadb"
 
 mnt_root: /mnt
 
+
+do_delete_images: false
+do_deploy_dockprom: false
+
+
 application_list:
+  - name: htpcmanager
+    repository: ghcr.io/linuxserver/htpcmanager
   - name: bazarr
     repository: ghcr.io/linuxserver/bazarr
   - name: deluge
@@ -38,3 +52,13 @@ application_list:
     repository: ghcr.io/linuxserver/sonarr
   - name: heimdall
     repository: ghcr.io/linuxserver/heimdall
+  - name: ubooquity
+    repository: ghcr.io/linuxserver/ubooquity
+  - name: mariadb
+    repository: ghcr.io/linuxserver/mariadb
+  - name: mylar3
+    repository: ghcr.io/linuxserver/mylar3
+  - name: mariadb
+    repository: ghcr.io/linuxserver/mariadb
+
+dockprom_repository: http://github.com/stefanprodan/dockprom
